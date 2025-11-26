@@ -137,7 +137,7 @@ class MdkExampleApp:
                 mls_group_id=group_id,
                 sender_public_key=self.keys.public_key().to_hex(),
                 content=content,
-                kind=1
+                kind=9
             )
             return json.loads(event_json)
         except Exception as e:
