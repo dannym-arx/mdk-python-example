@@ -115,21 +115,8 @@ class MdkExampleApp:
             await self.publish_welcome_rumors(result.welcome_rumors_json, [member_npub], [kp])
 
     def accept_welcome(self, welcome):
-        welcome_json = json.dumps({
-            "id": welcome.id,
-            "event_json": welcome.event_json,
-            "mls_group_id": welcome.mls_group_id,
-            "nostr_group_id": welcome.nostr_group_id,
-            "group_name": welcome.group_name,
-            "group_description": welcome.group_description,
-            "group_admin_pubkeys": welcome.group_admin_pubkeys,
-            "group_relays": welcome.group_relays,
-            "welcomer": welcome.welcomer,
-            "member_count": welcome.member_count,
-            "state": welcome.state,
-            "wrapper_event_id": welcome.wrapper_event_id
-        })
-        self.mdk.accept_welcome(welcome_json)
+        # Use event_json directly as per the updated API
+        self.mdk.accept_welcome(welcome_json=welcome.event_json)
 
     def send_message(self, group_id: str, content: str) -> dict | None:
         try:
